@@ -8,6 +8,8 @@ Databse is stored on disk as a CSV file
 
 ## Environment
 
+This project was set up with Node version 18.16.
+
 Copy the .env.example file to .env
 ```
 cp .env.example .env
