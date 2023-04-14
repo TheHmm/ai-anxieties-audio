@@ -1,0 +1,19 @@
+{
+  "name": "mumories",
+  "version": "1.0.0",
+  "description": "Gathering and displaying audio annotations for scraped archives <3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hackersanddesigners/mumories.git"
+  },
+  "author": "Karl, Artemis, Simon, Margarita, Sofia, Victor, Angelique",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hackersanddesigners/mumories/issues"
+  },
+  "homepage": "https://github.com/hackersanddesigners/mumories#readme"
+}
