@@ -29,3 +29,6 @@ h6 {
   text-decoration-line: underline;
 }
 p { font-family: var(--font-body); }
+a.nav_link {
+  color: red;
+}
