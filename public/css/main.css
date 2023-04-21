@@ -5,6 +5,7 @@
 :root {
   --font-body: 'Heal The Web A', serif;
   --font-header: 'Heal The Web B', sans-serif;
+  --font-link: monospace;
   font-size: 12px;
 }
 
@@ -30,5 +31,5 @@ h6 {
 }
 p { font-family: var(--font-body); }
 a.nav_link {
-  color: red;
+  font-family: var(--font-link);
 }
