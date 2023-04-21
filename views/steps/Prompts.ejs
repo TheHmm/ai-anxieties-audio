@@ -1,0 +1,19 @@
+
+<section>
+  <p>Is this your first time at MU?</p>
+</section>
+
+<section>
+  <p>
+    <%- include( `../components/navlink`, {
+      to: 'Prompts:FirstTimers',
+      label: 'Yes'
+    }) -%>
+  </p>
+  <p>
+    <%- include( `../components/navlink`, {
+      to: 'Prompts:OldTimers',
+      label: 'No'
+    }) -%>
+  </p>
+</section>

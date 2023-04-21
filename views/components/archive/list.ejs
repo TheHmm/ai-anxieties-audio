@@ -1,0 +1,27 @@
+<form
+  action="/Record"
+  method="POST"
+>
+  <p>
+    <ul>
+      <% for ( const exhibit of list ) { %>
+        <li>
+          <label>
+            <input
+              type="radio"
+              name="exhibit"
+              value="<%= exhibit.slug %>"
+            >
+              <%- include( './exhibit', { exhibit } ) %>
+          </label>
+        </li>
+      <% } %>
+    </ul>
+  </p>
+  <p>
+    <input
+      type="submit"
+      value="Record"
+    >
+  </p>
+</form>

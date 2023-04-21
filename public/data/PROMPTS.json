@@ -1,0 +1,15 @@
+{
+  "FirstTimers" : [
+    "What do you imagine the exhibition will be like?",
+    "What did you know about MU before you arrived?",
+    "Blah blah",
+    "More bla"
+  ],
+  "OldTimers": [
+    "Do you remember the first time you were here and what you saw?",
+    "Do you remember the last time you were here and what you saw?",
+    "What sense do you associate with MU?",
+    "What's the first memory that comes to mind when you think of MU?",
+    "Do you want to share a memory about a specific exhibition?"
+  ]
+}

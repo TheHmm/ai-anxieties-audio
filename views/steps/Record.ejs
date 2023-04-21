@@ -1,0 +1,21 @@
+<section>
+  <h2>Record your mumory!</h2>
+  <% if ( data.chosen_prompts ) { %>
+    <p>Your chosen prompts are:</p>
+    <ul>
+      <% for ( const prompt of data.chosen_prompts ) { %>
+        <li><%= prompt %></li>
+      <% } %>
+    </ul>
+  <% } else if ( data.chosen_exhibit ) { %>
+    <p>Your chosen exhbition is:</p>
+    <p>
+      <%- include( '../components/archive/exhibit', { exhibit: data.chosen_exhibit } ) %>
+    </p>
+  <% } %>
+</section>
+
+<section>
+  <h3>Recording Area</h3>
+
+</section>

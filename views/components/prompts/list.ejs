@@ -1,0 +1,21 @@
+<form
+  action="/Record"
+  method="POST"
+>
+  <p>
+    <select
+      name="prompts"
+      multiple
+    >
+      <% for ( const prompt of list ) { %>
+        <%- include( './prompt', { prompt } ) %>
+      <% } %>
+    </select>
+  </p>
+  <p>
+    <input
+      type="submit"
+      value="Record"
+    >
+  </p>
+</form>
