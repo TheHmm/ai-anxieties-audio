@@ -5,7 +5,7 @@
 :root {
   --font-body: 'Heal The Web A', serif;
   --font-header: 'Heal The Web B', sans-serif;
-  --font-link: monospace;
+  --font-link: 'Heal The Web B', monospace;
   font-size: 12px;
 }
 
