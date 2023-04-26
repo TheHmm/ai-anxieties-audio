@@ -28,9 +28,10 @@ h6 {
   color: white;
   font-family:var(--font-header);
   text-shadow: 0 0 1rem blue;
-  text-decoration-line: underline;
 }
 p { font-family: var(--font-body); }
 a.nav_link {
   font-family: var(--font-link);
+  font-size: 3rem;
+  color: mediumpurple;
 }
