@@ -84,7 +84,8 @@ app.get( '/:step', ( req, res ) =>  {
 // for when someone chooses prompts or archive entries to
 // respond to, process them and send them to record area
 
-app.post( '/Record', ( req, res ) =>  {
+app.post
+( '/Record', ( req, res ) =>  {
   const chosen_prompts = req.body.prompts
   const chosen_exhibit = Object.values( ARCHIVE ).find( e => e.slug == req.body.exhibit )
   console.log( req.body )
@@ -94,12 +95,13 @@ app.post( '/Record', ( req, res ) =>  {
     ARCHIVE,
     STEP: 'Record',
     data: {
-      chosen_prompts,
+      chosen_prompts: Array.isArray(chosen_prompts)
+        ? chosen_prompts
+        : [chosen_prompts],
       chosen_exhibit,
     }
   })
 })
-
 
 
 
