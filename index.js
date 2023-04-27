@@ -5,12 +5,13 @@
 
 // Imporitng libraries
 
+const fs = require( 'fs' )
 const path = require( 'path' )
 const env = require( 'dotenv' )
 const express = require( 'express' )
 const body_parser = require( 'body-parser' )
 const ejs = require( 'ejs' )
-
+const multer = require('multer');
 
 
 // configuring environemnt, extracting constants
@@ -86,47 +87,47 @@ app.get( '/:step', ( req, res ) =>  {
 
 app.post
 ( '/Record', ( req, res ) =>  {
-  const chosen_prompts = req.body.prompts
-  const chosen_exhibit = Object.values( ARCHIVE ).find( e => e.slug == req.body.exhibit )
-  console.log( req.body )
+  const data = {}
+  if (req.body.prompts) {
+    const chosen_prompts = req.body.prompts
+    data.chosen_prompts = Array.isArray(chosen_prompts)
+      ? chosen_prompts
+      : [chosen_prompts]
+  }
+  if (req.body.exhibit) {
+    data.chosen_exhibit = Object.values( ARCHIVE ).find( e => e.slug === req.body.exhibit )
+  }
+  console.log( req.body, data )
   res.render( 'index', {
     TITLE,
     PROMPTS,
     ARCHIVE,
     STEP: 'Record',
-    data: {
-      chosen_prompts: Array.isArray(chosen_prompts)
-        ? chosen_prompts
-        : [chosen_prompts],
-      chosen_exhibit,
-    }
+    data,
   })
 })
+const storage = multer.diskStorage(
+    {
+        destination: './sound_files/',
+        filename: function (req, file, cb ) {
+            cb( null, file.originalname);
+        }
+    }
+);
 
+const upload = multer( { storage: storage } );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+app.post("/notes", upload.single("audio_data"), function(req,res){
+  console.log(req.file, JSON.parse(req.body.data))
+  fs.writeFile(req.file.path.replace(".wav", ".json"), req.body.data, (error) => {
+    if (error) {
+      res.status(503).send(error.message)
+    }
+    else {
+      res.status(200).send("Uploaded to server!");
+    }
+  })
+});
 
 // start server
 

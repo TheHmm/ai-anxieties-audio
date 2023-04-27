@@ -17,4 +17,94 @@
 
 <section>
   <h3>Recording Area</h3>
+  <div id="controls">
+    <button id="recordButton">Record</button>
+    <button id="stopButton" disabled>Stop recording</button>
+    <button id="discardButton" disabled>Discard recording</button>
+    <button id="uploadButton" disabled>Upload to server</button>
+  </div>
+  <div id="output"></div>
 </section>
+
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+<script>    
+    let rec = null;
+    let audioStream = null;
+
+    let audioData = null;
+    let audioElement = null;
+    const recordButton = document.getElementById("recordButton");
+    const stopButton = document.getElementById("stopButton");
+    const discardButton = document.getElementById("discardButton");
+    const uploadButton = document.getElementById("uploadButton");
+
+    recordButton.addEventListener("click", startRecording);
+    stopButton.addEventListener("click", stopRecording);
+    discardButton.addEventListener("click", discardRecording);
+    uploadButton.addEventListener("click", uploadRecording);
+
+    function startRecording() {
+
+        let constraints = { audio: true, video:false }
+
+        recordButton.disabled = true;
+        stopButton.disabled = false;
+
+        navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+            const audioContext = new window.AudioContext();
+            audioStream = stream;
+            const input = audioContext.createMediaStreamSource(stream);
+            rec = new Recorder(input, { numChannels: 1 })
+            rec.record()
+            document.getElementById("output").innerHTML = "Recording started..."
+        }).catch(function(err) {
+            recordButton.disabled = false;
+            stopButton.disabled = true;
+        });
+    }
+
+    function stopRecording() {
+        document.getElementById("output").innerHTML = "Stop recording..."
+        stopButton.disabled = true;
+        discardButton.disabled = false;
+        uploadButton.disabled = false;
+        rec.stop();
+        audioStream.getAudioTracks()[0].stop();
+        rec.exportWAV((blob) => {
+          audioData = blob;
+          audioElement = document.createElement("audio")
+          audioElement.setAttribute("src", URL.createObjectURL(blob))
+          audioElement.toggleAttribute("controls")
+          document.body.appendChild(audioElement)
+        });
+    }
+
+    function discardRecording() {
+      document.getElementById("output").innerHTML = "Discard recording..."
+      recordButton.disabled = false;
+      discardButton.disabled = true;
+      uploadButton.disabled = true;
+      audioElement.remove();
+    }
+
+    function uploadRecording() {
+        recordButton.disabled = false;
+        discardButton.disabled = true;
+        uploadButton.disabled = true;
+        audioElement.remove();
+        const filename = "sound-file-" + new Date().getTime() + ".wav";
+        const formData = new FormData();
+        const data = JSON.parse(`<%- JSON.stringify(data) %>`);
+        formData.append("audio_data", audioData, filename);
+        formData.append("data", JSON.stringify(data));
+        
+        fetch('http://localhost:3000/notes', {
+            method: 'POST',
+            body: formData
+        }).then(async result => { 
+            document.getElementById("output").innerHTML = await result.text();
+        }).catch(error => { 
+            document.getElementById("output").innerHTML = "An error occurred: " + error;
+        })
+    }
+</script>
