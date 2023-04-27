@@ -97,7 +97,7 @@
         formData.append("audio_data", audioData, filename);
         formData.append("data", JSON.stringify(data));
         
-        fetch('http://localhost:3000/notes', {
+        fetch('/notes', {
             method: 'POST',
             body: formData
         }).then(async result => { 
