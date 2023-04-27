@@ -5,13 +5,13 @@
 
 // Imporitng libraries
 
-const fs = require( 'fs' )
 const path = require( 'path' )
 const env = require( 'dotenv' )
 const express = require( 'express' )
 const body_parser = require( 'body-parser' )
 const ejs = require( 'ejs' )
 const multer = require('multer');
+const fs = require( 'fs' )
 
 
 // configuring environemnt, extracting constants
