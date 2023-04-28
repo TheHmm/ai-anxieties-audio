@@ -89,8 +89,8 @@ app.get( '/:step', ( req, res ) =>  {
 app.post
 ( '/Record', ( req, res ) =>  {
   const data = {}
-  if (req.body.prompts) {
-    const chosen_prompts = req.body.prompts
+  if (req.body.chosen_prompts) {
+    const chosen_prompts = req.body.chosen_prompts
     data.chosen_prompts = Array.isArray(chosen_prompts)
       ? chosen_prompts
       : [chosen_prompts]
