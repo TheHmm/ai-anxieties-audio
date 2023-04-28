@@ -3,15 +3,22 @@
   method="POST"
 >
   <p>
-    <select
-      name="prompts"
-      multiple
-    >
+    <ul>
       <% for ( const prompt of list ) { %>
-        <%- include( './prompt', { prompt } ) %>
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              name="chosen_prompts"
+              value="<%= prompt %>"
+            >
+              <%- include( './prompt', { prompt } ) %>
+          </label>
+        </li>
       <% } %>
-    </select>
+    </ul>
   </p>
+
   <p>
     <input
       type="submit"
