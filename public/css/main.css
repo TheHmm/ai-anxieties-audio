@@ -35,3 +35,6 @@ a.nav_link {
   font-size: 3rem;
   color: mediumpurple;
 }
+ul {
+  list-style: none;
+}
