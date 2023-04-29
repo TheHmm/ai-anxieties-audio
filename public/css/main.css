@@ -37,4 +37,5 @@ a.nav_link {
 }
 ul {
   list-style: none;
+  padding-inline-start: 0;
 }
