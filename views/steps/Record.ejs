@@ -24,13 +24,49 @@
     <button id="uploadButton" disabled>Upload to server</button>
   </div>
   <div id="output"></div>
+  <div id="timer" style="display: none;">
+    <span id="minutes">00</span>:<span id="seconds">00</span>
+  </div>  
 </section>
 
+
 <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
-<script>    
+<script>
     let rec = null;
     let audioStream = null;
 
+    //TIMER OBJECT
+    const timer = {
+      element: document.getElementById("timer"),
+      totalSeconds: null,
+      interval: null,
+      start () {
+        if (this.interval) {
+          return;
+        }
+        this.interval = setInterval( () => {
+          this.totalSeconds += 1;
+          if (this.totalSeconds === 3 * 60) {
+            stopRecording();
+          }
+          document.getElementById("minutes").innerText = `${Math.floor(this.totalSeconds / 60 )}`.padStart(2, "0");
+          document.getElementById("seconds").innerText = `${this.totalSeconds % 60}`.padStart(2, "0");
+        }, 1000);
+        this.element.style.display = "block";
+      },
+      reset () {
+        if (!this.interval) {
+          return;
+        }
+        timer.totalSeconds = null; 
+        clearInterval(this.interval);
+        this.interval = null;
+        document.getElementById("minutes").innerText = "00";
+        document.getElementById("seconds").innerText = "00";
+        this.element.style.display = "none";
+      },
+    };
+        
     let audioData = null;
     let audioElement = null;
     const recordButton = document.getElementById("recordButton");
@@ -45,10 +81,9 @@
 
     function startRecording() {
         let constraints = { audio: true, video:false }
-
         recordButton.disabled = true;
         stopButton.disabled = false;
-
+        
         navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
             const audioContext = new window.AudioContext();
             audioStream = stream;
@@ -60,9 +95,11 @@
             recordButton.disabled = false;
             stopButton.disabled = true;
         });
+        timer.start();   
     }
 
     function stopRecording() {
+        timer.reset();
         document.getElementById("output").innerHTML = "Stop recording..."
         stopButton.disabled = true;
         discardButton.disabled = false;
