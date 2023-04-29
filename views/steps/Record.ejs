@@ -91,7 +91,7 @@
         discardButton.disabled = true;
         uploadButton.disabled = true;
         audioElement.remove();
-        const filename = "sound-file-" + new Date().getTime() + ".wav";
+        const filename = "recording-" + new Date().toISOString() + ".wav";
         const formData = new FormData();
         const data = JSON.parse(`<%- JSON.stringify(data) %>`);
         formData.append("audio_data", audioData, filename);
