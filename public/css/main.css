@@ -1,7 +1,3 @@
-/* SIMON go wild! */
-
-@import url("/fonts/healtheweb/stylesheet.css");
-
 :root {
   --font-body: 'Heal The Web A', serif;
   --font-header: 'Heal The Web B', sans-serif;
@@ -35,7 +31,26 @@ a.nav_link {
   font-size: 3rem;
   color: mediumpurple;
 }
+input[type=button],
+input[type=submit] {
+        border: none;
+        background-color: mediumpurple;
+        color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        cursor: pointer;
+        font-family: var(--font-link);
+        font-size: 2rem;
+      }
+input[type=text]:focus {
+        color: #pink;
+      }
+
 ul {
   list-style: none;
   padding-inline-start: 0;
+}
+li > label {
+  font-family: var(--font-body);
 }
