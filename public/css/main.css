@@ -9,6 +9,7 @@
 
 body {
   color:mediumpurple;
+  font-family: var(--font-body);
   background: radial-gradient(lightgrey, lightpink, pink);
   overflow-x:hidden;
   font-size: 2rem;
@@ -34,7 +35,12 @@ a.nav_link {
   color: mediumpurple;
 }
 input[type=button],
-input[type=submit] {
+input[type=submit],
+#recordButton,
+#stopButton,
+#discardButton,
+#uploadButton
+ {
         border: none;
         background-color: mediumpurple;
         color: white;
