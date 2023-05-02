@@ -60,3 +60,10 @@ ul {
 li > label {
   font-family: var(--font-body);
 }
+
+#archive input ~ div {
+  display: none;
+}
+#archive input:checked ~ div {
+  display: block;
+}
