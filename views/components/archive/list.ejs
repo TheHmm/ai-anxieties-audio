@@ -1,4 +1,5 @@
 <form
+  id="archive"
   action="/Record"
   method="POST"
 >
@@ -6,22 +7,22 @@
     <ul>
       <% for ( const exhibit of list ) { %>
         <li>
-          <label>
-            <input
-              type="radio"
-              name="exhibit"
-              value="<%= exhibit.slug %>"
-            >
-              <%- include( './exhibit', { exhibit } ) %>
+          <input
+            type="radio"
+            name="exhibit"
+            value="<%= exhibit.slug %>"
+          >
+          <label for="exhibit">
+            <%- include( './exhibit', { exhibit } ) %>
           </label>
+          <div>
+            <input
+              type="submit"
+              value="Record"
+            >
+          </div>
         </li>
       <% } %>
     </ul>
-  </p>
-  <p>
-    <input
-      type="submit"
-      value="Record"
-    >
   </p>
 </form>
