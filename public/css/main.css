@@ -97,3 +97,15 @@ div.cover img {
 div.time p.start{
   margin-bottom: 1rem;
 }
+
+/* prompt layout */
+
+section form ul li label {
+  padding-left: 0;
+}
+
+/* recording area */
+
+div#controls {
+  padding-top: 1rem;
+}
