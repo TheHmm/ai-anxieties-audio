@@ -38,8 +38,7 @@ input[type=submit],
 #recordButton,
 #stopButton,
 #discardButton,
-#uploadButton
- {
+#uploadButton{
         border: none;
         background-color: mediumpurple;
         color: white;
@@ -53,7 +52,9 @@ input[type=submit],
 input[type=text]:focus {
         color: #pink;
       }
-
+li input:checked {
+  background-color: mediumpurple;
+}
 ul {
   list-style: none;
   padding-inline-start: 0;
@@ -69,27 +70,29 @@ li > label {
   display: block;
 }
 
-form#archive ul li{
-  display: flex;
-  justify-content: left;
-  align-items: flex-start;
+/* archive layout */
+form#archive li{
+  background-color: lightgrey;
+  box-shadow: 0 0 1rem blue;
+  border-radius: 2rem;
+  padding: 1rem;
+  margin: 1rem;
+  width: auto;
 }
-
 article.exhibition {
   padding-bottom: 2rem;
 }
-
 li > input {
   padding: 2rem;
 }
-
 li > label {
   margin-top: -1rem;
   padding-left: 1rem;
 }
 div.cover img {
   padding-top: 1rem;
+  width: 100%;
 }
 div.time p.start{
-  margin: 1rem;
+  margin-bottom: 1rem;
 }
