@@ -25,6 +25,7 @@ h6 {
   color: white;
   font-family:var(--font-header);
   text-shadow: 0 0 1rem blue;
+  margin: 0;
 }
 p { font-family: var(--font-body); }
 a.nav_link {
@@ -66,4 +67,29 @@ li > label {
 }
 #archive input:checked ~ div {
   display: block;
+}
+
+form#archive ul li{
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+}
+
+article.exhibition {
+  padding-bottom: 2rem;
+}
+
+li > input {
+  padding: 2rem;
+}
+
+li > label {
+  margin-top: -1rem;
+  padding-left: 1rem;
+}
+div.cover img {
+  padding-top: 1rem;
+}
+div.time p.start{
+  margin: 1rem;
 }
