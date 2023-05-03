@@ -71,6 +71,7 @@ li > label {
 }
 
 /* archive layout */
+section form,
 form#archive li{
   background-color: lightgrey;
   box-shadow: 0 0 1rem blue;
