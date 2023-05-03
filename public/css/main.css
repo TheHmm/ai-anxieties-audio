@@ -53,9 +53,6 @@ input[type=submit],
 input[type=text]:focus {
         color: #pink;
       }
-li input:checked {
-  background-color: mediumpurple;
-}
 ul {
   list-style: none;
   padding-inline-start: 0;
