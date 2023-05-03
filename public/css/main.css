@@ -26,7 +26,7 @@ h6 {
   color: white;
   font-family:var(--font-header);
   text-shadow: 0 0 1rem blue;
-  margin: 0;
+  margin: 0.5rem;
 }
 p { font-family: var(--font-body); }
 a.nav_link {
