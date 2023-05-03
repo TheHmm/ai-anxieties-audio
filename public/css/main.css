@@ -28,7 +28,7 @@ h6 {
   text-shadow: 0 0 1rem blue;
 /*  margin: 0.5rem;*/
 }
-p { font-family: var(--font-body); }
+p { font-family: var(--font-body); word-break: break-word;}
 a.nav_link {
   font-family: var(--font-link);
   font-size: 3rem;
@@ -72,9 +72,9 @@ li > label {
 /*section + section form,*/
 /*section form > ul,*/
 form#archive li{
-  display: inline-flex;
+/*  display: inline-flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap;*/
   box-shadow: 0 0 1rem blue;
   border-radius: 2rem;
   padding: 1rem;
