@@ -17,6 +17,7 @@ body {
   margin: 1rem;
 }
 h1,
+h1 > a,
 h2,
 h3,
 h4,
@@ -71,9 +72,9 @@ li > label {
 }
 
 /* archive layout */
-section form,
+section + section form,
+section form > ul,
 form#archive li{
-  background-color: lightgrey;
   box-shadow: 0 0 1rem blue;
   border-radius: 2rem;
   padding: 1rem;
