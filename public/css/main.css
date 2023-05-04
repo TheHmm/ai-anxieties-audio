@@ -4,6 +4,7 @@
   --font-body: 'Heal The Web A', serif;
   --font-header: 'Heal The Web B', sans-serif;
   --font-link: 'Heal The Web B', monospace;
+  --theme-purple: mediumpurple;
   font-size: 12px;
 }
 
@@ -32,8 +33,9 @@ p { font-family: var(--font-body); word-break: break-word;}
 a.nav_link {
   font-family: var(--font-link);
   font-size: 3rem;
-  color: mediumpurple;
+  color: var(--theme-purple);
 }
+/* buttons */
 input[type=button],
 input[type=submit],
 #recordButton,
@@ -53,6 +55,28 @@ input[type=submit],
 input[type=text]:focus {
         color: #pink;
       }
+
+/* radio buttons */
+input[type=radio] {
+  appearance: none;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border: 2px solid var(--theme-purple);
+  transition: 0.2s all linear;
+}
+
+input[type=radio]:checked {
+  appearance: none;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: var(--theme-purple);
+  border: 2px solid white;
+  transition: 0.2s all linear;
+}
+
 ul {
   list-style: none;
   padding-inline-start: 0;
