@@ -125,7 +125,7 @@ app.post("/notes", upload.single("audio_data"), function(req,res){
       res.status(503).send(error.message)
     }
     else {
-      res.status(200).send("Uploaded to server!");
+      res.status(200).send("The recording has been uploaded!");
     }
   })
 });
