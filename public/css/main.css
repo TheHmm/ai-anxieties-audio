@@ -36,7 +36,7 @@ a {
 }
 a.nav_link {
   font-family: var(--font-link);
-  font-size: 3rem;
+  font-size: 5rem;
   color: var(--theme-purple);
 }
 /* buttons */
@@ -64,8 +64,8 @@ input[type=text]:focus {
 input[type=radio] {
   appearance: none;
   border-radius: 50%;
-  width: 1rem;
-  height: 1rem;
+  width: 3rem;
+  height: 3rem;
   background-color: white;
   border: 2px solid var(--theme-purple);
   transition: 0.2s all linear;
