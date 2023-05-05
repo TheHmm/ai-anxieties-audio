@@ -130,7 +130,7 @@ div.time p.start{
 
 section form ul li label {
   padding-left: 0;
-  font-size: 3rem;
+/*  font-size: 3rem; disabled because it makes the text bigger in prompts, but too big in archive view*/
 }
 
 /* recording area */
