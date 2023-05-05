@@ -49,12 +49,12 @@ input[type=submit],
         border: none;
         background-color: mediumpurple;
         color: white;
-        padding: 1rem;
+        padding: 1.5rem;
         border-radius: 0.5rem;
         text-decoration: none;
         cursor: pointer;
         font-family: var(--font-link);
-        font-size: 2rem;
+        font-size: 3rem;
       }
 input[type=text]:focus {
         color: #pink;
