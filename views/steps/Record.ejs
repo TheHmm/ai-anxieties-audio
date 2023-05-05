@@ -90,7 +90,7 @@
             const input = audioContext.createMediaStreamSource(stream);
             rec = new Recorder(input, { numChannels: 1 })
             rec.record()
-            document.getElementById("output").innerHTML = "Recording started..."
+            document.getElementById("output").innerHTML = "The recording has started"
         }).catch(function(err) {
             recordButton.disabled = false;
             stopButton.disabled = true;
@@ -100,7 +100,7 @@
 
     function stopRecording() {
         timer.reset();
-        document.getElementById("output").innerHTML = "Stop recording..."
+        document.getElementById("output").innerHTML = "The recording has stopped"
         stopButton.disabled = true;
         discardButton.disabled = false;
         uploadButton.disabled = false;
@@ -116,7 +116,7 @@
     }
 
     function discardRecording() {
-      document.getElementById("output").innerHTML = "Discard recording..."
+      document.getElementById("output").innerHTML = "The recording has been discarded"
       recordButton.disabled = false;
       discardButton.disabled = true;
       uploadButton.disabled = true;
