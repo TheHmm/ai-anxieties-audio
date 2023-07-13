@@ -1,17 +1,19 @@
 {
   "OldTimers": [
-    "Do you remember the first time you were here and what you saw?",
-    "Do you remember the last time you were here and what you saw?",
-    "What sense do you associate with MU?",
-    "What's the first memory that comes to mind when you think of MU?",
-    "Do you want to share a memory about a specific exhibition?"
+    "I remember the first time I was here, I saw...",
+    "I remember the last time I was here, I saw...",
+    "The sense that I mainly associate with MU is...",
+    "When I think of MU, the first memory that comes to mind is...",
+    "I want to share a memory about this one exhibition I saw at MU..."
   ],
   "NeverTimers": [
-    "Do you?",
-    "Do you want?"
+    "If I came to MU I imagine it would be like...",
+    "An exhibition that I imagine could take place at MU is...",
+    "I imagine that MU smells like...",
+    "For me, a Hybrid Art House is..."
   ],
   "FirstTimers" : [
-    "What do you imagine the exhibition will be like?",
-    "What did you know about MU before you arrived?"
+    "I imagine this exhibition will be like...",
+    "Before I arrived I knew that MU was..."
   ]
 }
