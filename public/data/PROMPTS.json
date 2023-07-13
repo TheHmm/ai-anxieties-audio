@@ -1,8 +1,4 @@
 {
-  "FirstTimers" : [
-    "What do you imagine the exhibition will be like?",
-    "What did you know about MU before you arrived?"
-  ],
   "OldTimers": [
     "Do you remember the first time you were here and what you saw?",
     "Do you remember the last time you were here and what you saw?",
@@ -14,5 +10,9 @@
     "If I came to MU I imagine it would be like....",
     "An exhibition that I imagine could take place at MU is....",
     "Do you want to share a memory about a specific exhibition?"
+  ],
+  "FirstTimers" : [
+    "What do you imagine the exhibition will be like?",
+    "What did you know about MU before you arrived?"
   ]
 }
