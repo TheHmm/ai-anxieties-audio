@@ -132,6 +132,18 @@ section form ul li label {
   padding-left: 0;
 }
 
+/*--------------------------------- listening gallery */
+
+section#listening.gallery {
+}
+
+div.listen-item {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
+
 /*--------------------------------- recording area */
 
 div#controls {
