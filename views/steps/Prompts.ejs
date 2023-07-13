@@ -6,14 +6,20 @@
 <section>
   <p>
     <%- include( `../components/navlink`, {
-      to: 'Prompts:FirstTimers',
+      to: 'Prompts:OldTimers',
       label: 'Yes'
     }) -%>
   </p>
   <p>
     <%- include( `../components/navlink`, {
-      to: 'Prompts:OldTimers',
+      to: 'Prompts:NeverTimers',
       label: 'No'
+    }) -%>
+  </p>
+  <p>
+    <%- include( `../components/navlink`, {
+      to: 'Prompts:FirstTimers',
+      label: 'This is my first time here'
     }) -%>
   </p>
 </section>
