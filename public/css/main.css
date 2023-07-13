@@ -154,3 +154,19 @@ div.listen-item {
 div#controls {
   padding-top: 1rem;
 }
+
+/*--------------------------------- welcome page */
+
+section.about-mumories{
+/*  display: inline-block;*/
+  padding: 1rem;
+}
+
+summary::marker{
+  display: inline-block;
+  color: white;
+}
+
+h2.h2-summary{
+  margin-top: 0;
+}
