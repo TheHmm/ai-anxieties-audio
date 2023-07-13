@@ -47,15 +47,9 @@ const app = express()
 app.use( body_parser.urlencoded({ extended: true }) )
 app.engine( '.html', ejs.__express )
 app.set( 'views', VIEWS_PATH )
-app.use( express.static( PUBLIC_PATH ) )
 app.set( 'view engine', 'ejs' )
-app.use( '/sound_files', 
-  (req, res, next) => {
-    req.url = req.url.replace('/sound_files', '');
-    next();
-  },
-  express.static( SOUND_PATH ) )
-
+app.use( '/sound_files', express.static( SOUND_PATH ) )
+app.use( express.static( PUBLIC_PATH ) )
 
 // main route! what people get when they go to '/'
 
@@ -86,8 +80,6 @@ app.get( '/:step', ( req, res ) =>  {
     STEP,
   })
 })
-
-
 
 // for when someone chooses prompts or archive entries to
 // respond to, process them and send them to record area
