@@ -27,10 +27,10 @@ h6 {
   color: white;
   font-family:var(--font-header);
   text-shadow: 0 0 1rem blue;
-/*  margin: 0.5rem;*/
 }
 p { font-family: var(--font-body); word-break: break-word;}
-/* links */
+
+/*--------------------------------- links */
 a {
   color: var(--theme-purple);
 }
@@ -39,7 +39,7 @@ a.nav_link {
   font-size: 5rem;
   color: var(--theme-purple);
 }
-/* buttons */
+/*--------------------------------- buttons */
 input[type=button],
 input[type=submit],
 #recordButton,
@@ -60,7 +60,7 @@ input[type=text]:focus {
         color: #pink;
       }
 
-/* radio buttons and checkboxes */
+/*--------------------------------- radio buttons and checkboxes */
 input[type=radio] {
   appearance: none;
   border-radius: 50%;
@@ -96,7 +96,7 @@ li > label {
   display: block;
 }
 
-/* archive layout */
+/*--------------------------------- archive layout */
 form#archive li{
   display: inline-flex;
   flex-direction: row;
@@ -126,14 +126,13 @@ div.time p.start{
   margin-bottom: 1rem;
 }
 
-/* prompt layout */
+/*--------------------------------- prompt layout */
 
 section form ul li label {
   padding-left: 0;
-/*  font-size: 3rem; disabled because it makes the text bigger in prompts, but too big in archive view*/
 }
 
-/* recording area */
+/*--------------------------------- recording area */
 
 div#controls {
   padding-top: 1rem;
