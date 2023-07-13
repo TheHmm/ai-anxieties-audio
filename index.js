@@ -26,7 +26,7 @@ const TITLE = process.env.TITLE
 
 const VIEWS_PATH = path.join( __dirname, 'views' )
 const PUBLIC_PATH = path.join( __dirname, 'public' )
-
+const SOUND_PATH = path.join( __dirname, 'sound_files' )
 
 // Our data paths
 
@@ -49,7 +49,7 @@ app.engine( '.html', ejs.__express )
 app.set( 'views', VIEWS_PATH )
 app.use( express.static( PUBLIC_PATH ) )
 app.set( 'view engine', 'ejs' )
-app.use("/sound_files", express.static('sound_files'))
+app.use( '/sound_files', express.static( SOUND_PATH ) )
 
 // main route! what people get when they go to '/'
 
