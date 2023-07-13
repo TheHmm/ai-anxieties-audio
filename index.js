@@ -49,7 +49,7 @@ app.engine( '.html', ejs.__express )
 app.set( 'views', VIEWS_PATH )
 app.use( express.static( PUBLIC_PATH ) )
 app.set( 'view engine', 'ejs' )
-app.use("/audio", express.static('sound_files'))
+app.use("/sound_files", express.static('sound_files'))
 
 // main route! what people get when they go to '/'
 
