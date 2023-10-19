@@ -1,6 +1,6 @@
-# Mumories
+# The Hmm's audio repository for AI anxieties
 
-Node application that serves a set of webpages statically, that display an arxhive stored on a json file on disk and a web UI to record and submit audio annotations to this archive.
+Node application that serves a set of webpages statically, that display an arxhive stored on a json file on disk and a web UI to record and submit audio files.
 
 File server is Express
 Template engine is EJS
@@ -17,7 +17,7 @@ cp .env.example .env
 Edit the environment variables to your liking.
 ```
 PORT=3000
-TITLE=Mumories
+TITLE="AI Anxieties"
 ```
 ## Development
 
@@ -42,7 +42,7 @@ npm run start
 
 ## Authors
 
-Karl, Artemis, Simon, Margarita, Sofia, Victor, Angelique as part of INC's Going Hybrid / Living Archives working group
+Forked and tweaked by Karl from [Mumories](https://github.com/hackersanddesigners/mumories), which was co-authored by Karl, Artemis, Simon, Margarita, Sofia, Victor, Angelique as part of INC's Going Hybrid / Living Archives working group.
 
 ## License
 
