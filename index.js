@@ -9,10 +9,8 @@ const fs = require( 'fs' )
 const path = require( 'path' )
 const env = require( 'dotenv' )
 const express = require( 'express' )
-const body_parser = require( 'body-parser' )
+const multer = require( 'multer' )
 const ejs = require( 'ejs' )
-const multer = require('multer')
-const { fstat } = require('fs')
 
 
 // configuring environemnt, extracting constants
@@ -26,110 +24,77 @@ const TITLE = process.env.TITLE
 
 const VIEWS_PATH = path.join( __dirname, 'views' )
 const PUBLIC_PATH = path.join( __dirname, 'public' )
-const SOUND_PATH = path.join( __dirname, 'sound_files' )
-
-// Our data paths
-
-const DATA_PATH = path.join( PUBLIC_PATH, 'data' )
-const PROMPTS_PATH = path.join( DATA_PATH, 'PROMPTS.json' )
-const ARCHIVE_PATH = path.join( DATA_PATH, 'ARCHIVE.json' )
+const SOUND_PATH = path.join( PUBLIC_PATH, 'sound_files' )
 
 
-// Our data
+// Sound upload function
 
-const PROMPTS = require( PROMPTS_PATH )
-const ARCHIVE = require( ARCHIVE_PATH )
+const upload = multer({ storage: multer.diskStorage({
+  destination: SOUND_PATH,
+  filename: (req, file, cb ) => { cb( null, file.originalname )}
+})})
 
 
 // Initializing express app and configure EJS as engine
 
 const app = express()
-app.use( body_parser.urlencoded({ extended: true }) )
 app.engine( '.html', ejs.__express )
 app.set( 'views', VIEWS_PATH )
 app.set( 'view engine', 'ejs' )
-app.use( '/sound_files', express.static( SOUND_PATH ) )
 app.use( express.static( PUBLIC_PATH ) )
+
 
 // main route! what people get when they go to '/'
 
 app.get( '/', (req, res) => {
-  res.redirect( 'Welcome' )
+  res.render( 'index', {
+    TITLE,
+    STEP: 'Welcome' ,
+  })
 })
+
+
+// Recording a sound contribution
+
+app.get( '/Record', ( req, res ) =>  {
+  res.render( 'index', {
+    TITLE,
+    STEP: 'Record',
+  })
+})
+
+
+// Listening to a sound contribution
+
+app.get( '/Listen', ( req, res ) => {
+  res.render( 'index', {
+    TITLE,
+    STEP: 'Listen',
+    TRACKS: fs.readdirSync( SOUND_PATH )
+  })
+})
+
+
+// Uploading a sound file
+
+app.post( '/Upload', upload.single( 'file' ), (req,res) => {
+  res.status(200).send("The recording has been uploaded!");
+})
+
 
 
 // Error route
 
 app.get( '/Error?message=:message', (req, res) => {
-  const message = req.params.message
   res.render( 'Error', {
     TITLE,
-    message
+    message: req.params.message
   })
 })
 
-
-// create routes here
-
-app.get( '/:step', ( req, res ) =>  {
-  const STEP = req.params.step || '__DEFAULT__'
-  res.render( 'index', {
-    TITLE,
-    PROMPTS,
-    ARCHIVE,
-    STEP,
-  })
-})
-
-// for when someone chooses prompts or archive entries to
-// respond to, process them and send them to record area
-
-app.post
-( '/Record', ( req, res ) =>  {
-  const data = {}
-  if (req.body.chosen_prompts) {
-    const chosen_prompts = req.body.chosen_prompts
-    data.chosen_prompts = Array.isArray(chosen_prompts)
-      ? chosen_prompts
-      : [chosen_prompts]
-  }
-  if (req.body.exhibit) {
-    data.chosen_exhibit = Object.values( ARCHIVE ).find( e => e.slug === req.body.exhibit )
-  }
-  console.log( req.body, data )
-  res.render( 'index', {
-    TITLE,
-    PROMPTS,
-    ARCHIVE,
-    STEP: 'Record',
-    data,
-  })
-})
-const storage = multer.diskStorage(
-    {
-        destination: './sound_files/',
-        filename: function (req, file, cb ) {
-            cb( null, file.originalname);
-        }
-    }
-);
-
-const upload = multer( { storage: storage } );
-
-app.post("/notes", upload.single("audio_data"), function(req,res){
-  console.log(req.file, JSON.parse(req.body.data))
-  fs.writeFile(req.file.path.replace(".wav", ".json"), req.body.data, (error) => {
-    if (error) {
-      res.status(503).send(error.message)
-    }
-    else {
-      res.status(200).send("The recording has been uploaded!");
-    }
-  })
-});
 
 // start server
 
-app.listen(PORT, () => {
+app.listen( PORT, () => {
   console.log(`Example app listening on port ${ PORT }`)
 })

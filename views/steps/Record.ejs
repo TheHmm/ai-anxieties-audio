@@ -1,18 +1,5 @@
 <section>
   <h2>Record your mumory!</h2>
-  <% if ( data.chosen_prompts ) { %>
-    <p>Your chosen prompts are:</p>
-    <ul>
-      <% for ( const prompt of data.chosen_prompts ) { %>
-        <li><%= prompt %></li>
-      <% } %>
-    </ul>
-  <% } else if ( data.chosen_exhibit ) { %>
-    <p>Your chosen exhbition is:</p>
-    <p>
-      <%- include( '../components/archive/exhibit', { exhibit: data.chosen_exhibit } ) %>
-    </p>
-  <% } %>
 </section>
 
 <section>
@@ -26,7 +13,7 @@
   <div id="output"></div>
   <div id="timer" style="display: none;">
     <span id="minutes">00</span>:<span id="seconds">00</span>
-  </div>  
+  </div>
 </section>
 
 
@@ -58,7 +45,7 @@
         if (!this.interval) {
           return;
         }
-        timer.totalSeconds = null; 
+        timer.totalSeconds = null;
         clearInterval(this.interval);
         this.interval = null;
         document.getElementById("minutes").innerText = "00";
@@ -66,7 +53,7 @@
         this.element.style.display = "none";
       },
     };
-        
+
     let audioData = null;
     let audioElement = null;
     const recordButton = document.getElementById("recordButton");
@@ -83,7 +70,7 @@
         let constraints = { audio: true, video:false }
         recordButton.disabled = true;
         stopButton.disabled = false;
-        
+
         navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
             const audioContext = new window.AudioContext();
             audioStream = stream;
@@ -95,7 +82,7 @@
             recordButton.disabled = false;
             stopButton.disabled = true;
         });
-        timer.start();   
+        timer.start();
     }
 
     function stopRecording() {
@@ -130,16 +117,14 @@
         audioElement.remove();
         const filename = "recording-" + new Date().toISOString() + ".wav";
         const formData = new FormData();
-        const data = JSON.parse(`<%- JSON.stringify(data) %>`);
-        formData.append("audio_data", audioData, filename);
-        formData.append("data", JSON.stringify(data));
-        
-        fetch('/notes', {
+        formData.append( "file", audioData, filename);
+
+        fetch('/Upload', {
             method: 'POST',
             body: formData
-        }).then(async result => { 
+        }).then(async result => {
             document.getElementById("output").innerHTML = await result.text();
-        }).catch(error => { 
+        }).catch(error => {
             document.getElementById("output").innerHTML = "An error occurred: " + error;
         })
     }
