@@ -1,3 +1,4 @@
 node_modules
 .env
 sound_files
+npm-debug.log

@@ -1,7 +1,7 @@
 {
-  "name": "mumories",
+  "name": "ai-anxieties-audio",
   "version": "1.0.0",
-  "description": "Gathering and displaying audio annotations for scraped archives <3",
+  "description": "Gathering anxious audio contributions about AI.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,12 +12,12 @@
     "type": "git",
     "url": "git+ssh://git@github.com/hackersanddesigners/mumories.git"
   },
-  "author": "Karl, Artemis, Simon, Margarita, Sofia, Victor, Angelique",
+  "author": "Karl",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hackersanddesigners/mumories/issues"
+    "url": "https://github.com/TheHmm/ai-anxieties-audio/issues"
   },
-  "homepage": "https://github.com/hackersanddesigners/mumories#readme",
+  "homepage": "https://github.com/TheHmm/ai-anxieties-audio#readme",
   "dependencies": {
     "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
