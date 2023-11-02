@@ -18,7 +18,7 @@ cp .env.example .env
 Edit the environment variables to your liking.
 ```
 PORT=3000
-TITLE="AI Anxieties"
+TITLE="AI Hotline"
 ```
 ## Development
 

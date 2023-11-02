@@ -1,20 +1,41 @@
 
+
+
 :root {
-  --font-body: 'Times New Roman', serif;
-  --font-header: 'Authentic Sans', sans-serif;
-  --font-link: 'Jetbrains Mono', monospace;
+
+  --yellow: hsl(61, 100%, 50%);
+
+  --banner-height: 9rem;
+  --marquee-height: 3.5rem;
+  --header-height: calc( var(--banner-height) + var(--marquee-height) );
+  --main-height: calc( 100% - var(--header-height ) );
+
+  --font-serif: 'Times', 'Times New Roman', serif;
+  --font-sans: 'Arial', sans-serif;
+  --font-mono: 'NotCourierSans', monospace;
+
   --theme-purple: mediumpurple;
-  font-size: 10px;
+
 }
 
+
+@media (prefers-reduced-motion) {
+  * {
+    animation      : none !important;
+    transform      : none !important;
+    opacity        : unset !important;
+  }
+}
+
+
+
+html,
 body {
-  color:mediumpurple;
-  font-family: var(--font-body);
-  background: radial-gradient(lightgrey, lightpink, pink);
-  overflow-x:hidden;
-  font-size: 2rem;
-  padding: 1rem;
-  margin: 1rem;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: var(--font-mono);
+  background-color: var(--yellow);
 }
 h1,
 h1 > a,
@@ -23,41 +44,57 @@ h3,
 h4,
 h5,
 h6 {
-  color: white;
   font-family:var(--font-header);
-  text-shadow: 0 0 1rem blue;
 }
-p { font-family: var(--font-body); word-break: break-word;}
+p {
+}
+
+
+
+/*--------------------------------- images */
+
+img.inline {
+  display: inline;
+  height: 1.3em;
+  vertical-align: middle;
+  margin-inline: 0.5rem;
+}
 
 /*--------------------------------- links */
 a {
-  color: var(--theme-purple);
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: black;
 }
 a.nav_link {
   font-family: var(--font-link);
   font-size: 5rem;
-  color: var(--theme-purple);
 }
+
 /*--------------------------------- buttons */
+
 input[type=button],
 input[type=submit],
 #recordButton,
 #stopButton,
 #discardButton,
 #uploadButton{
-        border: none;
-        background-color: mediumpurple;
-        color: white;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        text-decoration: none;
-        cursor: pointer;
-        font-family: var(--font-link);
-        font-size: 3rem;
-      }
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 1rem 1.2rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 2.3rem;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.7);
+}
 input[type=text]:focus {
-        color: #pink;
+        color: pink;
       }
+
+
 
 /*--------------------------------- radio buttons and checkboxes */
 input[type=radio] {
@@ -94,6 +131,68 @@ li > label {
 #archive input:checked ~ div {
   display: block;
 }
+
+/*--------------------------------- main layout */
+
+main {
+  height: var(--main-height);
+  font-size: 2rem;
+  padding: 5rem;
+}
+
+main p {
+  max-width: 40em;
+}
+
+header {
+  max-height: var(--header-height);
+  background-color: white;
+  font-family: var(--font-sans);
+  width: 100%;
+  /* box-shadow: inset 0 0 30px black; */
+}
+
+header h1 {
+  margin: 0;
+}
+
+header .banner {
+  display        : block;
+  margin         : auto;
+  overflow       : visible;
+}
+
+header .banner.mobile {
+  display: none;
+}
+
+header .marquee {
+  position         : relative;
+  white-space      : nowrap;
+  overflow         : hidden;
+  display          : flex;
+  font-size        : 2rem;
+  align-items      : center;
+  height           : var(--marquee-height);
+  transform        : translateY(0rem);
+  z-index          : 1;
+  background-color: var(--yellow);
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 20px 3px;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+}
+
+header .marquee p {
+  margin           : 0;
+  padding          : 0 0.25rem;
+  animation        : marquee 60s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform : translate(0, 0); }
+  to   { transform : translate(-100%, 0); }
+}
+
 
 /*--------------------------------- archive layout */
 form#archive li{
@@ -138,20 +237,33 @@ section#listening.gallery {
 
 div.listen-item {
   display: inline-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 2rem;
-  width: auto;
+  flex-direction: column;
+  align-items: stretch;
+  width: 20rem;
   box-shadow: 0 0 1rem blue;
   border-radius: 2rem;
-  padding: 1rem;
   margin: 1rem 1rem 1rem 0;
+  overflow: hidden;
+}
+
+div.listen-item p {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 100%;
+  vertical-align: bottom;
+  font-size: 1rem;
+}
+
+div.listen-item p audio {
+  width: 100%;
+  margin-bottom: -0.4rem;
 }
 
 /*--------------------------------- recording area */
 
 div#controls {
-  padding-top: 1rem;
+  padding-block: 1rem;
 }
 
 /*--------------------------------- welcome page */
@@ -168,4 +280,20 @@ summary::marker{
 
 h2.h2-summary{
   margin-top: 0;
+}
+
+
+
+@media (max-width: 700px) {
+  main {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  header .banner {
+    display: none;
+    width: 95%
+  }
+  header .banner.mobile {
+    display: block;
+  }
 }

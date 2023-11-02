@@ -1,9 +1,11 @@
 <section>
-  <h2>Record your mumory!</h2>
+  <p>Welcome to the IDFA x The Hmm Hotline! Please record your question about artificial intelligence below and tune in for <a href="http://thehmm.nl/event/ask-us-anything-hotline-on-ai-advice">Ask Us Anything: Hotline on AI Advice</a> to hear a panel of experts give their answers December 6.</p>
+  <p>Don't know where to start?</p>
+  <p class="eg">☏: "Dear Hotline, I'm an anonymous graphic designer from Utrecht, and I'm wondering..."</p>
+  <p class="eg">☏: "Hi IDFA x The Hmm Hotline, I'm Alex from Rotterdam, and the other day I read something disturbing. Is it true that..."</p>
 </section>
 
 <section>
-  <h3>Recording Area</h3>
   <div id="controls">
     <button id="recordButton">Record</button>
     <button id="stopButton" disabled>Stop</button>
@@ -60,6 +62,7 @@
     const stopButton = document.getElementById("stopButton");
     const discardButton = document.getElementById("discardButton");
     const uploadButton = document.getElementById("uploadButton");
+    const outputElement = document.getElementById("output");
 
     recordButton.addEventListener("click", startRecording);
     stopButton.addEventListener("click", stopRecording);
@@ -77,7 +80,7 @@
             const input = audioContext.createMediaStreamSource(stream);
             rec = new Recorder(input, { numChannels: 1 })
             rec.record()
-            document.getElementById("output").innerHTML = "The recording has started..."
+            outputElement.innerHTML = "The recording has started..."
         }).catch(function(err) {
             recordButton.disabled = false;
             stopButton.disabled = true;
@@ -87,7 +90,7 @@
 
     function stopRecording() {
         timer.reset();
-        document.getElementById("output").innerHTML = "The recording has stopped."
+        outputElement.innerHTML = "The recording has stopped."
         stopButton.disabled = true;
         discardButton.disabled = false;
         uploadButton.disabled = false;
@@ -98,12 +101,13 @@
           audioElement = document.createElement("audio")
           audioElement.setAttribute("src", URL.createObjectURL(blob))
           audioElement.toggleAttribute("controls")
-          document.body.appendChild(audioElement)
+          outputElement.innerHTML = ""
+          outputElement.appendChild(audioElement)
         });
     }
 
     function discardRecording() {
-      document.getElementById("output").innerHTML = "The recording has been discarded."
+      outputElement.innerHTML = "The recording has been discarded."
       recordButton.disabled = false;
       discardButton.disabled = true;
       uploadButton.disabled = true;
@@ -123,9 +127,9 @@
             method: 'POST',
             body: formData
         }).then(async result => {
-            document.getElementById("output").innerHTML = await result.text();
+            outputElement.innerHTML = `<p>The recording has been uploaded. <br />Don't forget to join us at <a href="http://thehmm.nl/event/ask-us-anything-hotline-on-ai-advice">Ask Us Anything: Hotline on AI Advice</a> to hear your question answered!</p>`;
         }).catch(error => {
-            document.getElementById("output").innerHTML = "An error occurred: " + error;
+            outputElement.innerHTML = "An error occurred: " + error;
         })
     }
 </script>

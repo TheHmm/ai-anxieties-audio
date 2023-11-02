@@ -44,19 +44,9 @@ app.set( 'view engine', 'ejs' )
 app.use( express.static( PUBLIC_PATH ) )
 
 
-// main route! what people get when they go to '/'
-
-app.get( '/', (req, res) => {
-  res.render( 'index', {
-    TITLE,
-    STEP: 'Welcome' ,
-  })
-})
-
-
 // Recording a sound contribution
 
-app.get( '/Record', ( req, res ) =>  {
+app.get( '/', ( req, res ) =>  {
   res.render( 'index', {
     TITLE,
     STEP: 'Record',
