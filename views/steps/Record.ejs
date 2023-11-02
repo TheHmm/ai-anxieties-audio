@@ -35,7 +35,7 @@
         }
         this.interval = setInterval( () => {
           this.totalSeconds += 1;
-          if (this.totalSeconds === 3 * 60) {
+          if (this.totalSeconds === 60) {
             stopRecording();
           }
           document.getElementById("minutes").innerText = `${Math.floor(this.totalSeconds / 60 )}`.padStart(2, "0");
